@@ -15,11 +15,12 @@ extern "C"{
   {
     vector<string> words;
     segment.cut(text, words);
-    int word_count = words.size(), i = 0;
+    int word_count = words.size();
     result = (char**)(malloc(sizeof(char*)*word_count));
-    for (string& word : words)
+    int i = 0;
+    for (vector<string>::const_iterator j = words.begin(); j != words.end(); j++)
     {
-      result[i++] = strdup(word.c_str());
+      result[i++] = strdup((*j).c_str());
     }
     return word_count;
   }
