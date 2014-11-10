@@ -1,0 +1,5 @@
+task :default => :compile
+file "wrapper/mix_segment.so" do
+  system "make mix_segment.so"
+end
+task :compile => ["wrapper/mix_segment.so"]
