@@ -1,12 +1,13 @@
 # jieba_ffi
 [![Build Status](https://travis-ci.org/altkatz/jieba_ffi.png?branch=master)](https://travis-ci.org/altkatz/jieba_ffi)
+
 FFI bindings of [libcppjieba](https://github.com/aszxqw/libcppjieba/) for Ruby. Thanks to [fxsjy](https://github.com/fxsjy), [aszxqw](https://github.com/aszxqw/), and [falood](https://github.com/falood).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'jieba_ffi'
+    gem 'jieba_ffi', :require => 'jieba'
 
 And then execute:
 
@@ -18,8 +19,8 @@ Or install it yourself as:
 
 ## Usage
 
-	require 'jieba'
-    Jieba::MixSegment.init
+	# require 'jieba' if not using bundler
+    Jieba::MixSegment.init  # Using dict and hmm model in ext/libcppjieba/dict by default
     words = Jieba::MixSegment.cut "我来到南京市长江大桥"
     #["我", "来到", "南京市", "长江大桥"]
 

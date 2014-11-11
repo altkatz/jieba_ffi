@@ -12,7 +12,7 @@ else
 endif
 
 mix_segment.so:
-	$(CC) $(CFLAGS) $(CPPJIEBA_FLAGS) -shared $(OPTIONS) -DLOGGER_LEVEL=LL_ERROR mix_segment.cpp -o $@ 2>&1
+	$(CXX) $(CFLAGS) $(CPPJIEBA_FLAGS) -shared $(OPTIONS) -DLOGGER_LEVEL=LL_ERROR mix_segment.cpp -o $@ 2>&1
 clean:
 	rm *.so
 	rm -r *.so.*

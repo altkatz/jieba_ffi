@@ -1,14 +1,12 @@
 #include "MixSegment.hpp"
 
 using namespace CppJieba;
-const char * const dict_path =  "../libcppjieba/dict/jieba.dict.utf8";
-const char * const model_path = "../libcppjieba/dict/hmm_model.utf8";
 MixSegment segment;
 
 extern "C"{
-  void init()
+  bool init_c(const char * dict_path, const char * model_path)
   {
-    segment.init(dict_path, model_path);
+    return segment.init(dict_path, model_path);
   }
 
   int cut_c(const char* text, char **&result)
