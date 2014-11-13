@@ -3,12 +3,8 @@ require 'ffi'
 module Jieba
   module MixSegment
     extend FFI::Library
-    ffi_lib "#{::File.dirname(__FILE__)}/../../wrapper/mix_segment.so"
-    attach_function :init_c, [:string, :string], :bool
-    attach_function :cut_c, [:string, :pointer], :int
-    attach_function :free_c, [:int, :pointer], :void
-    DEFAULT_DICT_PATH = "#{::File.dirname(__FILE__)}/../../ext/libcppjieba/dict/jieba.dict.utf8"
-    DEFAULT_MODEL_PATH = "#{::File.dirname(__FILE__)}/../../ext/libcppjieba/dict/hmm_model.utf8"
+    DEFAULT_DICT_PATH = Jieba::EXT_BASE + "dict/jieba.dict.utf8"
+    DEFAULT_MODEL_PATH =  Jieba::EXT_BASE + "dict/hmm_model.utf8"
 
     def self.init dict_path = DEFAULT_DICT_PATH, model_path = DEFAULT_MODEL_PATH
       init_c dict_path, model_path
@@ -24,5 +20,11 @@ module Jieba
         word.force_encoding('UTF-8')
       end
     end
+
+    private
+    ffi_lib Jieba::WRAPPER_BASE+"mix_segment.so"
+    attach_function :init_c, [:string, :string], :bool
+    attach_function :cut_c, [:string, :pointer], :int
+    attach_function :free_c, [:int, :pointer], :void
   end
 end
