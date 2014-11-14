@@ -27,7 +27,7 @@ extern "C"{
   {
     for (int i = 0; i < word_count; ++i)
     {
-      free(result[i++]);
+      free(result[i]);
     }
     free(result);
   }
